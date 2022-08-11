@@ -1,0 +1,85 @@
+﻿@*@model Project.Models.Blog*@
+@model Project.Models.Class.BlogComment
+@using Project.Controllers.Frontend
+
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BlogDetay</h2>
+
+@foreach (var item in Model.BlogComments)
+{
+
+    <div class="entry-header entry-header-style-1 mb-30 mt-50">
+        <h1 class="entry-title mb-30 font-weight-500">
+            @item.title
+        </h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="entry-meta align-items-center meta-2 font-small color-muted">
+                    <span class="mr-10">@item.blogDate</span>
+                    <a href="" class="mr-10 favorite">Favorile <i class="ti-heart"></i></a>
+                    @ViewBag.Basarili
+                </div>
+            </div>
+        </div>
+    </div>
+    <article class="entry-wraper mb-50">
+        <div class="entry-main-content dropcap wow fadeIn animated">
+            <hr class="section-divider">
+            <p>@item.text</p>
+        </div>
+    </article>
+}
+
+<!--Comments-->
+
+@foreach (var item in Model.CommentComments)
+{
+    <div class="comments-area">
+        <div class="comment-list wow fadeIn animated">
+            <div class="single-comment justify-content-between d-flex">
+                <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                        <img src="~/Content/Blog/temp/html/newsboard/demo/assets/imgs/default.jpg" alt="">
+                    </div>
+                    <div class="desc">
+                        <p class="comment">
+                            @item.text
+                        </p>
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <h5>
+                                    @Session["name"]
+                                </h5>
+                                <p class="date">@item.date</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Action("Comment", "Blog")
+
+<script src="~/Content/Blog/temp/html/newsboard/demo/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+@*<script>
+        $('.favorite').click(() => {
+                $.ajax({
+                    type: "POST",
+                    url: "/Blog/Favorite",
+                    data: {
+
+                    },
+
+                    }
+                })
+            });
+    </script>*@

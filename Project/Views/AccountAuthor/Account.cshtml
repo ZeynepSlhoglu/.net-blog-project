@@ -1,0 +1,47 @@
+﻿@model Project.Models.Authors
+
+@{
+    ViewBag.Title = "AccountLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-md-10">
+                <div class="login_wrap widget-taber-content p-30 background-white border-radius-5">
+                    <div class="padding_eight_all bg-white">
+                        <h2 class="mb-50 text-center position-relative divider-wave">Create an Account</h2>
+                        <p class="text-muted">* All information is encrypted and confidential</p>
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="text" required="" class="form-control" name="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" required="" class="form-control" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" required="" type="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="login_footer form-group">
+
+                            </div>
+                            <div>
+                                <div class="col-lg-12">
+                                    <span class="alert-danger">@ViewBag.HataliGiris</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-dark btn-block" name="login">Submit & Register</button>
+                            </div>
+                        </form>
+                        <div class="text-muted text-center">Already have an account? <a href="/UsersLogin/Login">Sign up now</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

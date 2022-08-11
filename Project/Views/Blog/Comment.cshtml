@@ -1,0 +1,71 @@
+﻿
+@if (Session["name"] != null)
+{
+
+    <article class="entry-wraper mb-50">
+        <div class="comment-form wow fadeIn animated">
+            <h3 class="mb-30">Leave a Reply</h3>
+            <form class="form-contact comment_form" name="formName" method="post" id="commentForm">
+                <div class="row">
+                    @if (Session["AuthorID"] != null)
+                    {
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="AuthorID" disabled>@Session["name"].ToString()</textarea>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="UserID" disabled>@Session["name"].ToString()</textarea>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea class="form-control w-100" data-blogId="@ViewBag.BlogID" name="BlogID">@ViewBag.BlogID</textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea class="form-control w-100" name="text" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="btnGonder" class="btn button button-contactForm">Post Comment</button>
+                </div>
+            </form>
+          
+        </div>
+    </article>
+}
+
+@section scripts{
+
+    <script src="~/Content/Blog/temp/html/newsboard/demo/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    
+
+    <script>
+        @*$(".button-contactForm").click(function () {
+            console.log("Çalıştı");
+            var blogId = $(this).data("blogId");
+             $.ajax({
+                type: "POST",
+                URL: "/Blog/BlogDetay/" + @ViewBag.BlogID,
+                 data: $(".comment_form").serialize(),
+                success: function () {
+                    alert("Yorumunuz başarıyla kaydedildi.");
+                    window.location.replace("/Blog/BlogDetay/" + @ViewBag.BlogID); 
+                },
+                error: function () {
+                    alert("Sıkıntıı"); 
+                }
+            })*@
+        });
+    </script>
+
+
+}

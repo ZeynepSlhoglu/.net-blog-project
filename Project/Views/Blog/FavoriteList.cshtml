@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Project.Models.Favorites>
+@using Project.Controllers.Frontend
+@{
+    ViewBag.Title = "FavoriteList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FavoriteList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            blogıd
+        </th>
+        <th>
+            userıd
+        </th>
+        <th>
+            ıd
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+        </tr>
+    }
+
+</table>

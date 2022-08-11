@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Project.Models.Comments>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Authors.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Blogs.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Authors.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blogs.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

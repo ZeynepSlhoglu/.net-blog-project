@@ -1,0 +1,258 @@
+﻿@if (Session["AdminID"] != null) { 
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Blog Admin Panel</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/Backend/images/favicon.png">
+    <!-- Pignose Calender -->
+    <link href="~/Content/Backend/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="~/Content/Backend/plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="~/Content/Backend/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="~/Content/Backend/css/style.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="/AdminBlog/Index/">
+                    <b class="logo-abbr"><img src="~/Content/Backend/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/Content/Backend/images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="~/Content/Backend/images/logo-text.png" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+
+                        </li>
+
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="~/Content/Backend/images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                               <i class="icon-user"></i> <span>@Session["AdminID"]</span>
+                                        </li>
+
+                                        <li><a href="/AdminUye/Logout"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Yönetici Paneli</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Site Ayarları</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./index.html">Sosyal Medya</a></li>
+                            <li><a href="./index-2.html">Header</a></li>
+                            <li><a href="./index-2.html">Footer</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Yorum</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/AdminComments/Index">Yorum Listele</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Admin</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/AdminUye/Create">Admin Ekle</a></li>
+                            <li><a href="/AdminUye/Index/">Admin Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Kategori</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/AdminKategori/Create">Kategori Ekle</a></li>
+                            <li><a href="/AdminKategori/Index/">Kategori Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="/AdminBlog/Index/" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Blog</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/AdminBlog/Create">Blog Ekle</a></li>
+                            <li><a href="/AdminBlog/Index/">Blogları Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Yorumlar</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./layout-one-column.html">Yorumları Listele</a></li>
+                        </ul>
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Kullanıcı</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./layout-one-column.html">Kullanıcıları Listele</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    @RenderBody()
+
+                </div>
+                <!-- #/ container -->
+            </div>
+            <!--**********************************
+                Content body end
+            ***********************************-->
+            <!--**********************************
+                Footer start
+
+
+
+            <div class="footer">
+                <div class="copyright">
+                    <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+                </div>
+            </div>
+            <!--**********************************
+                Footer end
+            ***********************************-->
+        </div>
+    </div>
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+        <!--**********************************
+            Scripts
+        ***********************************-->
+        <script src="~/Content/Backend/plugins/common/common.min.js"></script>
+        <script src="~/Content/Backend/js/custom.min.js"></script>
+        <script src="~/Content/Backend/js/settings.js"></script>
+        <script src="~/Content/Backend/js/gleek.js"></script>
+        <script src="~/Content/Backend/js/styleSwitcher.js"></script>
+
+        <!-- Chartjs -->
+        <script src="~/Content/Backend//plugins/chart.js/Chart.bundle.min.js"></script>
+        <!-- Circle progress -->
+        <script src="~/Content/Backend//plugins/circle-progress/circle-progress.min.js"></script>
+        <!-- Datamap -->
+        <script src="~/Content/Backend//plugins/d3v3/index.js"></script>
+        <script src="~/Content/Backend//plugins/topojson/topojson.min.js"></script>
+        <script src="~/Content/Backend//plugins/datamaps/datamaps.world.min.js"></script>
+        <!-- Morrisjs -->
+        <script src="~/Content/Backend//plugins/raphael/raphael.min.js"></script>
+        <script src="~/Content/Backend//plugins/morris/morris.min.js"></script>
+        <!-- Pignose Calender -->
+        <script src="~/Content/Backend//plugins/moment/moment.min.js"></script>
+        <script src="./plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+        <!-- ChartistJS -->
+        <script src="~/Content/Backend//plugins/chartist/js/chartist.min.js"></script>
+        <script src="~/Content/Backend//plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+
+
+        <script src="~/Content/Backend//js/dashboard/dashboard-1.js"></script>
+
+</body>
+
+</html>
+
+}

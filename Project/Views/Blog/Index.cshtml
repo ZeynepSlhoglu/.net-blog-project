@@ -1,0 +1,100 @@
+﻿
+@using PagedList
+@using PagedList.Mvc
+@using Project.Models.Class 
+@model IPagedList<Project.Models.Blogs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+  <main class="mt-30">
+        <div class="container">
+            <!--Featured post Start-->
+            <div class="home-featured mb-20">
+                <!--Tab Nav  -->
+                <div class="row font-heading mb-20">
+                    <div class="col-md-6 text-uppercase">
+                        <nav class="tab-nav font-weight-bold">
+                            <div class="nav nav-tabs" role="tablist">
+                                <a class="nav-item nav-link nav-tab active" data-toggle="tab" href="#nav-highlight" role="tab" aria-controls="nav-highlight" aria-selected="true">Yeni Bloglar</a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-highlight" role="tabpanel" aria-labelledby="nav-highlight">
+                                <div class="home-featured-1 post-module-1">
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <!--end post thumb-->
+                                        <div class="post-thumb position-relative">
+                                            <div class="thumb-overlay img-hover-slide transition-04s position-relative" style="background-image: url(@item.image)">
+                                                <a class="img-link" href="single.html"></a>
+                                                <div class="post-content-overlay transition-04s p-20">
+                                                    <div class="entry-meta mb-20 text-uppercase font-small text-white">
+                                                        <span class="create-date mr-15 ">@item.blogDate</span>
+                                                        <a href="#"><span class="post-cat text-white position-relative">@item.Categories.title</span></a>
+                                                    </div>
+                                                    <h4 class="post-title">
+                                                        <a class="text-white" href="single.html">@item.title</a>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                                <!--Tab content 1-->
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <!--Loop Grid 3-->
+            <section class="the-world mb-30">
+                <h6 class="font-weight-bold widget-header widget-header-style-2 mb-30">
+                    <span class="d-block mb-10 text-uppercase font-family-normal">Bloglar</span>
+                    <span class="line-dots"></span>
+                </h6>
+                <div class="loop-grid-3 row vertical-divider">
+                
+                    <div class="col-lg-12 col-md-12">
+                        <div class="row vertical-divider">
+
+                            @foreach (var item in Model)
+                            {
+                                <article class="col-md-6 wow fadeIn animated">
+                                    <figure class="mb-15">
+                                        <a href="Blog/BlogDetay/@item.BlogID">
+                                            <img src="@item.image" alt="">
+                                        </a>
+                                    </figure>
+                                    <h6 class="excerpt" >
+                                        <span >@item.Categories.title</span>
+                                    </h6>
+                                    <p>
+                                        <a href="Blog/BlogDetay/@item.BlogID" class="post-title font-weight-bold mb-10">
+                                            @item.title
+                                        </a>
+                                    </p>
+                                </article>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <link href="~/Content/PagedList.css" rel="stylesheet" />
+        <div class="row">
+            <div class="pagedList pagination-lg" style="position: relative; margin: auto;">
+                @Html.PagedListPager(Model, Page => Url.Action("Index", new {Page}), PagedListRenderOptions.Classic)
+            </div>
+        </div>
+    </main>

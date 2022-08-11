@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Project.Models.Blogs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Yeni Blog Oluştur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.blogDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Authors.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            <img class="img-responsive" width="20" src="@item.image" alt="Resim" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.blogDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Authors.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories.title)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.BlogID }) |
+            @Html.ActionLink("Detay", "Details", new { id=item.BlogID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.BlogID })
+        </td>
+    </tr>
+}
+
+</table>

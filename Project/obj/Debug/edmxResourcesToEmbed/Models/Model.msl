@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BLOGModelStoreContainer" CdmEntityContainer="BLOGEntities">
+    <EntitySetMapping Name="About">
+      <EntityTypeMapping TypeName="BLOGModel.About">
+        <MappingFragment StoreEntitySet="About">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="BLOGModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="BLOGModel.Authors">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="BLOGModel.Blogs">
+        <MappingFragment StoreEntitySet="Blogs">
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="blogDate" ColumnName="blogDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="BLOGModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="BLOGModel.Comments">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favorites">
+      <EntityTypeMapping TypeName="BLOGModel.Favorites">
+        <MappingFragment StoreEntitySet="Favorites">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="BLOGModel.Settings">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemLogs">
+      <EntityTypeMapping TypeName="BLOGModel.SystemLogs">
+        <MappingFragment StoreEntitySet="SystemLogs">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BLOGModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="about" ColumnName="about" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

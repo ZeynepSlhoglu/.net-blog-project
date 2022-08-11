@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BLOGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="About">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="text" Type="text" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="AuthorID" />
+    </Key>
+    <Property Name="AuthorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blogs">
+    <Key>
+      <PropertyRef Name="BlogID" />
+    </Key>
+    <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="text" Type="text" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="AuthorID" Type="int" />
+    <Property Name="blogDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="text" Type="text" Nullable="false" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="BlogID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AuthorID" Type="int" />
+  </EntityType>
+  <EntityType Name="Favorites">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogID" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemLogs">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminID" Type="int" />
+    <Property Name="SettingID" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="about" Type="text" />
+  </EntityType>
+  <Association Name="FK__About__AuthorID__078C1F06">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="About" Type="Self.About" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorID" />
+      </Principal>
+      <Dependent Role="About">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Blogs__AuthorID__09746778">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorID" />
+      </Principal>
+      <Dependent Role="Blogs">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Blogs__CategoryI__0880433F">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Blogs">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Author__2CBDA3B5">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__BlogID__1C873BEC">
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogs">
+        <PropertyRef Name="BlogID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__UserID__2DB1C7EE">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favorites__BlogI__45F365D3">
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="0..1" />
+    <End Role="Favorites" Type="Self.Favorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogs">
+        <PropertyRef Name="BlogID" />
+      </Principal>
+      <Dependent Role="Favorites">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favorites__UserI__0A688BB1">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Favorites" Type="Self.Favorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Favorites">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SystemLog__Admin__0B5CAFEA">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="SystemLogs" Type="Self.SystemLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminID" />
+      </Principal>
+      <Dependent Role="SystemLogs">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SystemLog__Setti__6383C8BA">
+    <End Role="Settings" Type="Self.Settings" Multiplicity="0..1" />
+    <End Role="SystemLogs" Type="Self.SystemLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Settings">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemLogs">
+        <PropertyRef Name="SettingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BLOGModelStoreContainer">
+    <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blogs" EntityType="Self.Blogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemLogs" EntityType="Self.SystemLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__About__AuthorID__078C1F06" Association="Self.FK__About__AuthorID__078C1F06">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="About" EntitySet="About" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Blogs__AuthorID__09746778" Association="Self.FK__Blogs__AuthorID__09746778">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Blogs" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Blogs__CategoryI__0880433F" Association="Self.FK__Blogs__CategoryI__0880433F">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Blogs" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Author__2CBDA3B5" Association="Self.FK__Comments__Author__2CBDA3B5">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__BlogID__1C873BEC" Association="Self.FK__Comments__BlogID__1C873BEC">
+      <End Role="Blogs" EntitySet="Blogs" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__UserID__2DB1C7EE" Association="Self.FK__Comments__UserID__2DB1C7EE">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favorites__BlogI__45F365D3" Association="Self.FK__Favorites__BlogI__45F365D3">
+      <End Role="Blogs" EntitySet="Blogs" />
+      <End Role="Favorites" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favorites__UserI__0A688BB1" Association="Self.FK__Favorites__UserI__0A688BB1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Favorites" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SystemLog__Admin__0B5CAFEA" Association="Self.FK__SystemLog__Admin__0B5CAFEA">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="SystemLogs" EntitySet="SystemLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SystemLog__Setti__6383C8BA" Association="Self.FK__SystemLog__Setti__6383C8BA">
+      <End Role="Settings" EntitySet="Settings" />
+      <End Role="SystemLogs" EntitySet="SystemLogs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

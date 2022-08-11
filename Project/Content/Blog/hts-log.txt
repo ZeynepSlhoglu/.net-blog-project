@@ -1,0 +1,16 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 26 Jul 2022 12:32:42 at http://demos.alithemes.com/html/newsboard/demo/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +http://demos.alithemes.com +*/http://demos.alithemes.com/html/newsboard/demo/index.html/*
+(winhttrack -qiC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F  -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://demos.alithemes.com/html/newsboard/demo/index.html -O1 "C:\Benim Web Sitem\Blog" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +http://demos.alithemes.com +*/http://demos.alithemes.com/html/newsboard/demo/index.html/* )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+12:37:55	Error: 	"Not Found" (404) at link demos.alithemes.com/html/newsboard/demo/assets/imgs/news-1.jpg (from demos.alithemes.com/html/newsboard/demo/index.html)
+12:39:49	Error: 	"Not Found" (404) at link demos.alithemes.com/html/newsboard/demo/category-metro.html (from demos.alithemes.com/html/newsboard/demo/index.html)
+12:40:25	Error: 	"Not Found" (404) at link demos.alithemes.com/html/newsboard/demo/assets/imgs/marginalia-productive-work.png (from demos.alithemes.com/html/newsboard/demo/contact.html)
+12:40:25	Error: 	"Not Found" (404) at link demos.alithemes.com/html/newsboard/demo/assets/css/vendor/owl.video.play.png (from demos.alithemes.com/html/newsboard/demo/assets/css/vendor/owl.carousel.min.css)
+12:40:25	Error: 	"Not Found" (404) at link demos.alithemes.com/html/newsboard/demo/assets/css/images/controls.png (from demos.alithemes.com/html/newsboard/demo/assets/css/vendor/ticker-style.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 7 minutes 43 seconds : 129 links scanned, 123 files written (11873697 bytes overall), 123 files updated [10133632 bytes received at 21886 bytes/sec], 2433823 bytes transferred using HTTP compression in 65 files, ratio 24%, 3.1 requests per connection
+(5 errors, 0 warnings, 0 messages)
