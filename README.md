@@ -1,6 +1,6 @@
 # .net-blog-project
  <br>
-## Template
+##  Template
 
 ![Ekran Görüntüsü (667)](https://user-images.githubusercontent.com/58303082/185222506-5a64d926-ca06-445c-bc9e-ec9eec37a1af.png)
 ![Ekran Görüntüsü (668)](https://user-images.githubusercontent.com/58303082/185222526-e40bd557-f37f-48e7-8ff5-a9ab8631db80.png)
