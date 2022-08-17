@@ -1,9 +1,5 @@
 # .net-blog-project
  <br>
-## Admin Dashbord
-![Ekran Görüntüsü (672)](https://user-images.githubusercontent.com/58303082/185222446-299e92bf-aa61-43e0-b5bd-5a08d7e8affa.png)
-![Ekran Görüntüsü (673)](https://user-images.githubusercontent.com/58303082/185222480-666ebef4-c21f-479f-9f31-48ba58e4adcb.png)
-
 ## Template
 
 ![Ekran Görüntüsü (667)](https://user-images.githubusercontent.com/58303082/185222506-5a64d926-ca06-445c-bc9e-ec9eec37a1af.png)
